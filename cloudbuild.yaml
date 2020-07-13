@@ -1,0 +1,7 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/ibm-db2-extractor:$SHORT_SHA', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/ibm-db2-extractor:$SHORT_SHA']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['run', 'deploy', 'ibm-db2-extractor', '--image=gcr.io/$PROJECT_ID/ibm-db2-extractor:$SHORT_SHA', '--region=europe-west1', '--set-env-vars', 'SECRET_ID=$SECRET_ID,GCP_PROJECT=$PROJECT_ID', '--no-allow-unauthenticated', '--platform=managed', '--service-account=$SERVICE_ACCOUNT']
