@@ -25,12 +25,3 @@ tables_to_export = [{
     "where_clause": "FLOWER_CLASS = 'Iris-setosa' LIMIT 10",
     "schema_bigquery": SCHEMA_IRIS_FLOWER
 }]
-
-
-# tables_to_export = [{
-#     "table": "COMMANDS",
-#     "alias": None,
-#     "columns": "ID, APPLIANCE",
-#     "where_clause": 'MONTH(DB_TS) = {} AND YEAR(DB_TS) = {} LIMIT 10'.format(month, year),
-#     "schema": SCHEMA_COMMANDS
-# }]
